@@ -4,13 +4,13 @@ function getComputerChoice() {
     //console.log(randomNumber);
     switch (true) {
         case (randomNumber<0.3):
-          choice = "Rock";
+          choice = "rock";
           break;
         case (randomNumber>0.3 && randomNumber<0.6):
-          choice = "Paper";
+          choice = "paper";
           break;
         case (randomNumber>0.6):
-          choice = "Scissor";
+          choice = "scissor";
           break;
         default:
           //Declaraciones ejecutadas cuando ninguno de los valores coincide con el valor de la expresión
@@ -20,5 +20,15 @@ function getComputerChoice() {
     return(choice);
 }
 
+function getHumanChoice() {
+    let choice = prompt("Choose rock, paper or scissor").toLowerCase;
+    while(choice != "rock" && choice != "paper" && choice != "scissor") {
+        choice = prompt("ERROR: choose rock, paper or scissor");
+    }
+    return(choice)
+}
+
 let computerChoice = getComputerChoice();
+let humanChoice = getHumanChoice();
 console.log(computerChoice);
+console.log(humanChoice)
