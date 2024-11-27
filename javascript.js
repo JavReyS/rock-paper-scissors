@@ -29,30 +29,55 @@ function getHumanChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
+    let winner = "none";
     if((humanChoice == "rock" && computerChoice == "paper") || 
     (humanChoice == "paper" && computerChoice == "scissor") || 
     (humanChoice == "scissor" && computerChoice == "rock")) {
-        computerScore += 1;
+        winner = "computer"
         console.log("You lose! " + computerChoice + " beats " + humanChoice + ".");
     } else {
         if((humanChoice == "rock" && computerChoice == "scissor") || 
         (humanChoice == "paper" && computerChoice == "rock") || 
         (humanChoice == "scissor" && computerChoice == "paper")) {
             console.log("You win! " + humanChoice + " beats " + computerChoice + ".");
-            humanScore += 1;
+            winner = "human"
         } else {
             console.log("Draw, you chose " + humanChoice + " and computer chose " + computerChoice + ".");
         }
     }
+    return(winner);
 }
 
-let humanScore = 0;
-let computerScore = 0;
+function playGame() {
+    let humanScore = 0;
+    let computerScore = 0;
+    
+    for(let i=0; i<5; i++) {
+        let computerChoice = getComputerChoice();
+        let humanChoice = getHumanChoice();
+        let roundWinner;
+        
+        console.log(computerChoice);
+        console.log(humanChoice);
 
-let computerChoice = getComputerChoice();
-let humanChoice = getHumanChoice();
+        roundWinner = playRound(humanChoice, computerChoice);
+        if(roundWinner == "human")
+            humanScore += 1;
+        else if(roundWinner == "computer")
+            computerScore += 1;
 
-console.log(computerChoice);
-console.log(humanChoice);
+        console.log("your score: " + humanScore);
+        console.log("computer score: " + computerScore);
+    }
 
-playRound(humanChoice, computerChoice);
+    if(humanScore > computerScore)
+        console.log("Congratulations, you won the game!");
+    else if(humanScore < computerScore)
+        console.log("Bad luck, you lose the game");
+    else
+        console.log("Its a draw, try again");
+        
+}
+
+playGame();
+
