@@ -43,19 +43,20 @@ function getComputerChoice() {
 
 function playRound(humanChoice, computerChoice) {
     let winner = "none";
+    const result = document.querySelector('.result');
     if((humanChoice == "rock" && computerChoice == "paper") || 
     (humanChoice == "paper" && computerChoice == "scissor") || 
     (humanChoice == "scissor" && computerChoice == "rock")) {
         winner = "computer"
-        console.log("You lose! " + computerChoice + " beats " + humanChoice + ".");
+        result.textContent = "You lose! " + computerChoice + " beats " + humanChoice + ".";
     } else {
         if((humanChoice == "rock" && computerChoice == "scissor") || 
         (humanChoice == "paper" && computerChoice == "rock") || 
         (humanChoice == "scissor" && computerChoice == "paper")) {
-            console.log("You win! " + humanChoice + " beats " + computerChoice + ".");
+            result.textContent = "You win! " + humanChoice + " beats " + computerChoice + ".";
             winner = "human"
         } else {
-            console.log("Draw, you chose " + humanChoice + " and computer chose " + computerChoice + ".");
+            result.textContent = "Draw, you chose " + humanChoice + " and computer chose " + computerChoice + ".";
         }
     }
     return(winner);
